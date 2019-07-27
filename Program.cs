@@ -9,7 +9,10 @@ namespace WeatherApi
     {
         static void Main(string[] args)
         {
-            var url = "http://api.openweathermap.org/data/2.5/weather?zip=33609,us&appid=c8edcaf7bcbca5cf2dbc12521cdcc658";
+            Console.WriteLine($"Enter Zip Code:");
+            var zipCode = Console.ReadLine();
+    
+            var url = $"http://api.openweathermap.org/data/2.5/weather?zip={zipCode},us&appid=c8edcaf7bcbca5cf2dbc12521cdcc658";
             var request = WebRequest.Create(url);
             var response = request.GetResponse();
             var rawResponse = String.Empty;
@@ -23,6 +26,7 @@ namespace WeatherApi
             Console.WriteLine($"Longitude: {currentWeather.coord.lon}");
             Console.WriteLine($"Latitude: {currentWeather.coord.lat}");
             Console.WriteLine($"City: {currentWeather.name}");
+            Console.WriteLine($"Clouds: {currentWeather.clouds.all}");
             Console.ReadLine();
         }
     }
